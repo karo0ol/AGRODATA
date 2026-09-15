@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroData · Iniciar sesión</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<div id="screen-login">
+  <div class="login-left">
+    <div class="collage">
+      <div class="photo c1"><img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=400&fit=crop" alt="Acuerdo comercial"></div>
+      <div class="photo c3"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&fit=crop" alt="Cultivo al atardecer"></div>
+      <div class="photo c2"><img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=400&fit=crop" alt="Agricultora revisando cultivo"></div>
+      <div class="photo c4"><img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=400&fit=crop" alt="Agricultor con tablet"></div>
+      <div class="badge badge-1"><i data-lucide="leaf"></i></div>
+      <div class="badge badge-2"><i data-lucide="users"></i></div>
+      <div class="badge badge-3"><i data-lucide="refresh-cw"></i></div>
+    </div>
+  </div>
+  <div class="login-right">
+    <div class="login-box">
+      <div class="brand"><div class="logo-mark">🌱</div><h1>AgroData</h1></div>
+      <h2>Bienvenido</h2>
+      <p class="sub">Ingresa a tu panel de gestión comercial</p>
+      <div class="role-toggle role-toggle-3">
+        <div class="role-btn active" data-role="asesor" onclick="selectLoginRole('asesor')">Distribuidor</div>
+        <div class="role-btn" data-role="gerente" onclick="selectLoginRole('gerente')">Gerente</div>
+        <div class="role-btn" data-role="administrador" onclick="selectLoginRole('administrador')">Administrador</div>
+      </div>
+      <form id="login-form" onsubmit="event.preventDefault(); doLogin();">
+        <div class="field">
+          <label>Correo electrónico</label>
+          <div class="input-wrap"><input type="email" id="login-email" placeholder="nombre@agrodata.com" required></div>
+        </div>
+        <div class="field">
+          <label>Contraseña</label>
+          <div class="input-wrap">
+            <input id="pass-input" type="password" placeholder="••••••••" required>
+            <button type="button" class="toggle-pass" onclick="togglePass()"><i data-lucide="eye" style="width:17px;height:17px"></i></button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary"><i data-lucide="log-in" style="width:16px;height:16px"></i> Iniciar sesión</button>
+      </form>
+      <a class="forgot-link" onclick="showForgotScreen()">¿No recuerdas tu contraseña?</a>
+    </div>
+  </div>
+</div>
+
+<div id="screen-forgot" class="hidden">
+  <div class="forgot-card" id="forgot-step1">
+    <div class="icon-circle"><i data-lucide="key-round" color="#fff"></i></div>
+    <h2>Restablecer contraseña</h2>
+    <p>Ingresa tu correo registrado y te enviaremos las instrucciones de recuperación.</p>
+    <form onsubmit="event.preventDefault(); sendReset();">
+      <input type="email" id="reset-email-input" placeholder="nombre@agrodata.com" required>
+      <button type="submit" class="btn btn-primary">Enviar enlace de acceso</button>
+    </form>
+    <a class="back-to-login" onclick="showLoginScreen()">← Volver a iniciar sesión</a>
+  </div>
+  <div class="forgot-card forgot-success hidden" id="forgot-step2">
+    <div class="icon-circle"><i data-lucide="mail-check" color="#fff"></i></div>
+    <h2>¡Correo enviado!</h2>
+    <p id="forgot-confirm-msg">Revisa tu bandeja de entrada, te hemos enviado un enlace para restablecer tu contraseña.</p>
+    <button class="btn btn-primary" onclick="simulateResetLinkClick()" style="width:100%;justify-content:center;">Simular clic en el enlace del correo</button>
+    <a class="back-to-login" onclick="showLoginScreen()">← Volver a iniciar sesión</a>
+  </div>
+  <div class="forgot-card hidden" id="forgot-step3">
+    <div class="icon-circle"><i data-lucide="lock-keyhole" color="#fff"></i></div>
+    <h2>Define tu nueva contraseña</h2>
+    <p>Tu enlace es válido por tiempo limitado y de un solo uso. Elige una contraseña nueva para tu cuenta.</p>
+    <form onsubmit="event.preventDefault(); confirmNewPasswordFromReset();">
+      <input type="password" id="reset-new-pass" placeholder="Nueva contraseña" minlength="8" required>
+      <input type="password" id="reset-confirm-pass" placeholder="Confirmar nueva contraseña" minlength="8" required style="margin-top:10px;">
+      <p id="reset-pass-error" style="color:#b93d3d;font-size:12px;display:none;margin-top:6px;"></p>
+      <button type="submit" class="btn btn-primary" style="margin-top:12px;">Guardar nueva contraseña</button>
+    </form>
+    <a class="back-to-login" onclick="showLoginScreen()">← Volver a iniciar sesión</a>
+  </div>
+  <div class="forgot-card forgot-success hidden" id="forgot-step4">
+    <div class="icon-circle"><i data-lucide="circle-check" color="#fff"></i></div>
+    <h2>¡Contraseña actualizada!</h2>
+    <p>Tu contraseña se restableció correctamente. Ya puedes iniciar sesión con tu nueva clave.</p>
+    <button class="btn btn-primary" onclick="showLoginScreen()" style="width:100%;justify-content:center;">Volver a iniciar sesión</button>
+  </div>
+</div>
+
+
+<script src="js/app.js"></script>
+</body>
+</html>
