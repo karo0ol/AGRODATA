@@ -42,10 +42,12 @@ export default function LayoutPublico() {
       <div className="login-left">
         <div className="collage">
           {/* Las imágenes están en public/img, por eso la ruta empieza con "/img" */}
-          <Foto clase="c1" src="/img/foto-acuerdo.png" alt="Acuerdo comercial" Icono={Handshake} />
-          <Foto clase="c3" src="/img/foto-cultivo.png" alt="Cultivo al atardecer" Icono={Sprout} />
-          <Foto clase="c2" src="/img/foto-agricultora.png" alt="Agricultora revisando cultivo" Icono={Wheat} />
-          <Foto clase="c4" src="/img/foto-tablet.png" alt="Agricultor con tablet" Icono={Tablet} />
+          
+          <Foto clase="c1" src={`${import.meta.env.BASE_URL}img/foto-acuerdo.png`} alt="Acuerdo comercial" Icono={Handshake} />
+          <Foto clase="c3" src={`${import.meta.env.BASE_URL}img/foto-cultivo.png`} alt="Cultivo al atardecer" Icono={Sprout} />
+          <Foto clase="c2" src={`${import.meta.env.BASE_URL}img/foto-agricultora.png`} alt="Agricultora revisando cultivo" Icono={Wheat} />
+          <Foto clase="c4" src={`${import.meta.env.BASE_URL}img/foto-tablet.png`} alt="Agricultor con tablet" Icono={Tablet} />
+
 
           {/* Círculos verdes decorativos con ícono */}
           <div className="badge badge-1"><Leaf size={22} /></div>
