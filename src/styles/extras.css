@@ -1,0 +1,290 @@
+/* ==========================================================================
+   extras.css: estilos que NO están en styles.css (el CSS del prototipo).
+   Se carga DESPUÉS de styles.css. Aquí viven:
+     1. Mensajes de los formularios de acceso (.form-error, .form-ok)
+     2. Enlaces del login (.btn-secondary-link, .link-suave)
+     3. Tablas con desplazamiento lateral (.table-wrap)
+     4. Calendario mensual (.cal-*)
+     5. Barra inferior del celular (.nav-movil) y lo que solo se ve en celular
+     6. Ajustes responsive (tablet y celular)
+   ========================================================================== */
+
+/* ---------- 1. Mensajes de los formularios de acceso ---------- */
+.form-error,
+.form-ok {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+.form-error { background: var(--rojo-bg); color: var(--rojo); border: 1px solid #efc3c3; }
+.form-ok { background: var(--verde-bg); color: var(--verde-primario); border: 1px solid #c9e3c7; }
+
+/* ---------- 2. Enlaces del login (fondo verde oscuro) ---------- */
+.btn-secondary-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  padding: 14px 18px;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 15.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn-secondary-link:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.5); }
+
+.link-suave {
+  display: block;
+  margin: 14px auto 0;
+  background: none;
+  color: #cdd8ca;
+  font-size: 13.5px;
+  font-style: italic;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.link-suave:hover { color: #fff; }
+
+/* ---------- 3. Tablas: si no caben, se desplazan de lado ---------- */
+.table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ---------- 4. Calendario mensual (CalendarioMensual.jsx) ---------- */
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+
+.cal-head {
+  text-align: center;
+  padding: 4px 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gris-texto);
+}
+
+.cal-dia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  min-height: 64px;
+  padding: 8px 4px;
+  background: #fff;
+  border: 1.5px solid #ece7d9;
+  border-radius: 10px;
+  color: var(--verde-oscuro);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.cal-dia:hover:not(:disabled) { border-color: var(--verde-claro); background: #fdfcf9; }
+.cal-dia:disabled { opacity: 0.5; cursor: not-allowed; }
+.cal-dia.hoy { border-color: var(--verde-acento); }
+.cal-dia[aria-pressed='true'] { background: var(--verde-bg); border-color: var(--verde-primario); }
+
+.cal-num {
+  min-width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 600;
+}
+.cal-dia.hoy .cal-num { background: var(--verde-acento); color: #fff; }
+
+.cal-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 3px; }
+.cal-dot {
+  min-width: 10px;
+  height: 10px;
+  padding: 0 3px;
+  border-radius: 10px;
+  font-size: 9px;
+  line-height: 10px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+}
+.cal-dot:not(:empty) { min-width: 15px; height: 15px; line-height: 15px; }
+.cal-visita { background: var(--verde-acento); }
+.cal-compromiso { background: var(--amarillo); }
+.cal-seguimiento { background: var(--morado); }
+
+/* ---------- 4b. Proceso de la venta (ProcesoVenta.jsx) y tarjetas de Oportunidades ---------- */
+.proceso-venta {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.proceso-paso {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+/* flechita entre un paso y el siguiente */
+.proceso-paso:not(:last-child)::after {
+  content: '›';
+  position: absolute;
+  top: 50%;
+  right: -11px;
+  transform: translateY(-50%);
+  z-index: 1;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--verde-claro);
+}
+.proceso-num {
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--verde-bg);
+  color: var(--verde-primario);
+  font-size: 13px;
+  font-weight: 700;
+}
+.proceso-paso strong { display: block; font-size: 14px; color: var(--verde-oscuro); }
+.proceso-paso small { display: block; margin-top: 2px; font-size: 12px; line-height: 1.3; color: var(--gris-texto); }
+.proceso-cuenta { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 700; color: var(--verde-primario); }
+.proceso-final { background: var(--verde-bg); }
+.proceso-final .proceso-num { background: var(--verde-acento); color: #fff; }
+
+.kanban-wrap.kanban-3 { grid-template-columns: repeat(3, minmax(240px, 1fr)); }
+.kanban-card { cursor: default; }
+.kc-acciones { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.kc-acciones .btn { width: 100%; }
+.kc-acciones .month-select { width: 100%; }
+
+/* ---------- Foto del login que no cargó: recuadro decorativo ---------- */
+.photo-vacia {
+  width: 100%;
+  aspect-ratio: 1.1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e2ebdc, #c5d8c0);
+  color: var(--verde-primario);
+}
+
+/* ---------- Foco visible con el teclado (el prototipo quita el contorno) ---------- */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--verde-acento);
+  outline-offset: 2px;
+}
+
+/* ---------- 5. Barra inferior del celular: oculta en pantallas anchas ---------- */
+.nav-movil { display: none; }
+.solo-movil { display: none; }
+
+/* ---------- 6. Responsive ---------- */
+
+/* Tablet y celular: el menú lateral se cambia por la barra inferior */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .solo-movil { display: flex; }
+
+  .nav-movil {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 120;
+    gap: 2px;
+    padding: 6px 6px calc(6px + env(safe-area-inset-bottom, 0px));
+    background: var(--verde-oscuro);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-movil::-webkit-scrollbar { display: none; }
+
+  .nav-movil a {
+    flex: 0 0 auto;
+    min-width: 66px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 7px 8px;
+    border-radius: 10px;
+    color: #cdd8ca;
+    font-size: 11px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-movil a svg { width: 20px; height: 20px; }
+  .nav-movil a.active { background: var(--verde-acento); color: #fff; }
+
+  .topbar { padding: 0 16px; }
+  .content { padding: 20px 16px 96px; }
+
+  .kpi-grid,
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .grid-2,
+  .import-grid { grid-template-columns: 1fr; }
+  .kanban-wrap { grid-template-columns: repeat(5, minmax(220px, 1fr)); }
+  .kanban-wrap.kanban-3 { grid-template-columns: repeat(3, minmax(240px, 1fr)); }
+  .proceso-venta { grid-template-columns: repeat(2, 1fr); }
+  .proceso-paso:not(:last-child)::after { display: none; }
+
+  /* Que los avisos no queden tapados por la barra inferior */
+  #toast-container { bottom: 84px; right: 16px; left: 16px; }
+
+  /* Login: solo el lado del formulario */
+  #screen-login { flex-direction: column; }
+  .login-left { display: none; }
+  .login-right { min-height: 100vh; padding: 24px 20px; }
+}
+
+/* Celular */
+@media (max-width: 640px) {
+  .form-grid,
+  .form-grid.cols-3 { grid-template-columns: 1fr; }
+  .proceso-venta { grid-template-columns: 1fr; }
+  .page-head h2 { font-size: 20px; }
+  .card { padding: 16px; }
+
+  .tabs { width: 100%; overflow-x: auto; flex-wrap: nowrap; }
+  .table-wrap table { min-width: 620px; }
+
+  .cal-grid { gap: 3px; }
+  .cal-dia { min-height: 52px; padding: 6px 2px; }
+
+  /* Ventanas emergentes casi a pantalla completa */
+  .modal { max-width: 100%; max-height: 94vh; border-radius: 16px; }
+  .modal-body { padding: 16px; }
+  .modal-head,
+  .modal-foot { padding-left: 16px; padding-right: 16px; }
+}
+
+/* ---------- Perfil (M1 · SYS-FR-094 a 096) ----------
+   La tarjeta del menú lateral y el chip de la barra superior ahora son enlaces a /perfil:
+   se les quita el subrayado y el color de enlace. */
+a.user-card,
+a.profile-chip {
+  text-decoration: none;
+  color: inherit;
+}

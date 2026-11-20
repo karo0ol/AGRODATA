@@ -1,0 +1,83 @@
+.resumen-cumplimiento {
+  background: #fff;
+  border: 1px solid #e0e8e3;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.resumen-cumplimiento__encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resumen-cumplimiento__encabezado h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.resumen-cumplimiento__porcentaje {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2f7d4f;
+}
+
+.resumen-cumplimiento__barra {
+  height: 10px;
+  background: #e8efe9;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.resumen-cumplimiento__progreso {
+  height: 100%;
+  background: #2f7d4f;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.resumen-cumplimiento__tarjetas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.resumen-cumplimiento__tarjeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  border-radius: 10px;
+  background: #f4f7f5;
+  color: #444;
+  font-size: 13px;
+}
+
+.resumen-cumplimiento__tarjeta strong {
+  font-size: 20px;
+}
+
+.resumen-cumplimiento__tarjeta--cumplido {
+  background: #eaf6ee;
+  color: #2f7d4f;
+}
+
+.resumen-cumplimiento__tarjeta--pendiente {
+  background: #fff6e0;
+  color: #b7791f;
+}
+
+.resumen-cumplimiento__tarjeta--vencido {
+  background: #fdeceb;
+  color: #c0392b;
+}
+
+@media (max-width: 600px) {
+  .resumen-cumplimiento__tarjetas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

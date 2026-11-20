@@ -1,0 +1,86 @@
+.form-oportunidad {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 640px;
+}
+
+.form-oportunidad__fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-oportunidad__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-oportunidad__campo label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-oportunidad__campo input,
+.form-oportunidad__campo select,
+.form-oportunidad__campo textarea {
+  padding: 10px 12px;
+  border: 1px solid #cbd5d1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.form-oportunidad__campo input:focus,
+.form-oportunidad__campo select:focus,
+.form-oportunidad__campo textarea:focus {
+  outline: 2px solid #2f7d4f;
+  border-color: transparent;
+}
+
+.form-oportunidad__error {
+  color: #c0392b;
+  font-size: 12px;
+}
+
+.form-oportunidad__total {
+  padding: 12px 14px;
+  background: #eef6f0;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.form-oportunidad__acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.form-oportunidad__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.form-oportunidad__btn--primario {
+  background: #2f7d4f;
+  color: #fff;
+}
+
+.form-oportunidad__btn--secundario {
+  background: #fff;
+  color: #333;
+  border-color: #cbd5d1;
+}
+
+@media (max-width: 600px) {
+  .form-oportunidad__fila {
+    grid-template-columns: 1fr;
+  }
+}
