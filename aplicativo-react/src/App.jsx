@@ -32,7 +32,7 @@ import NoEncontrada from './pages/NoEncontrada.jsx';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/AGRODATA">
       <Routes>
         {/* ---------- Sin sesión ---------- */}
         <Route element={<LayoutPublico />}>
